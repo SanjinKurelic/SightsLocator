@@ -56,7 +56,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
       handler.postDelayed(fetch, DELAY);
     } else {
-      locationViewModel.loadCurrentLocationData();
+      locationViewModel.loadCurrentLocationData(this);
     }
   }
 

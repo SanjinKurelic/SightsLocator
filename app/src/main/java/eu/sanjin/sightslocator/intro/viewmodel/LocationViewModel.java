@@ -7,16 +7,17 @@ import android.widget.Toast;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import java.lang.ref.WeakReference;
-import java.util.Objects;
 import java.util.Optional;
 
+import eu.sanjin.handlers.DaoHandler;
 import eu.sanjin.handlers.PreferenceHandler;
 import eu.sanjin.handlers.PreferenceKey;
 import eu.sanjin.handlers.RetrofitHandler;
 import eu.sanjin.model.Sight;
-import eu.sanjin.sightslocator.intro.model.LocationModel;
 import eu.sanjin.service.LocationDataRestApi;
+import eu.sanjin.sightslocator.intro.model.LocationModel;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 import lombok.Getter;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,12 +28,10 @@ public class LocationViewModel extends ViewModel {
 
   @Getter
   private MutableLiveData<LocationModel> location;
-  private WeakReference<Context> context;
 
   private static final String REST_CALL_ERROR_MESSAGE = "Error while fetching data from server. Please check internet connection and try opening application again.";
 
   public void init(Context context) {
-    this.context = new WeakReference<>(context);
     if (location != null) {
       return;
     }
@@ -41,7 +40,7 @@ public class LocationViewModel extends ViewModel {
     location.setValue(new LocationModel(lastUserLocation.orElse("")));
   }
 
-  public void loadCurrentLocationData() {
+  public void loadCurrentLocationData(Context context) {
     // TODO Fetch location from GPS
     String currentLocation = "Krk";
 
@@ -50,24 +49,24 @@ public class LocationViewModel extends ViewModel {
       @Override
       @EverythingIsNonNull
       public void onResponse(Call<Sight[]> call, Response<Sight[]> response) {
-        if (!Objects.isNull(context.get())) {
-          // Store fetched data to database
+        // Store fetched data to database
+        //noinspection ResultOfMethodCallIgnored
+        Observable.just(DaoHandler.getInstance(context).sightDao())
+          .subscribeOn(Schedulers.io())
+          .subscribe(db -> db.insertAll(response.body()));
 
-          // Store new location in shared pref
-          PreferenceHandler.setStringPreference(context.get(), PreferenceKey.LAST_USER_LOCATION, currentLocation);
+        // Store new location in shared pref
+        PreferenceHandler.setStringPreference(context, PreferenceKey.LAST_USER_LOCATION, currentLocation);
 
-          // Refresh VM
-          location.postValue(new LocationModel(currentLocation));
-        }
+        // Refresh VM
+        location.postValue(new LocationModel(currentLocation));
       }
 
       @Override
       @EverythingIsNonNull
       public void onFailure(Call<Sight[]> call, Throwable t) {
         Log.e(LocationViewModel.class.getName(), t.getMessage());
-        if (!Objects.isNull(context.get())) {
-          Toast.makeText(context.get(), REST_CALL_ERROR_MESSAGE, Toast.LENGTH_LONG).show();
-        }
+        Toast.makeText(context, REST_CALL_ERROR_MESSAGE, Toast.LENGTH_LONG).show();
       }
     });
   }
