@@ -11,10 +11,6 @@ import android.view.animation.Animation;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import java.util.Objects;
-
-import eu.sanjin.handlers.PreferenceHandler;
-import eu.sanjin.handlers.PreferenceKey;
 import eu.sanjin.sightslocator.MainViewActivity;
 import eu.sanjin.sightslocator.databinding.ActivitySplashScreenBinding;
 import eu.sanjin.sightslocator.intro.model.LocationModel;
@@ -45,7 +41,7 @@ public class SplashScreenActivity extends AppCompatActivity {
   protected void onResume() {
     super.onResume();
     startAnimations();
-    fetch();
+    refreshUi(locationViewModel.getLocation().getValue());
   }
 
   @Override
@@ -55,21 +51,12 @@ public class SplashScreenActivity extends AppCompatActivity {
   }
 
   private void refreshUi(LocationModel model) {
-    if (Objects.isNull(model) || Objects.isNull(model.getCurrentLocation())) {
-      locationViewModel.fetchNewLocation();
-      return;
-    }
-    binding.splashScreenLoadingIcon.setVisibility(View.INVISIBLE);
-  }
-
-  private void fetch() {
-    // We can add logic if current location != stored location then reload data from server
-    if (PreferenceHandler.getStringPreference(this, PreferenceKey.LAST_USER_LOCATION).isPresent()) {
+    if (!model.getCurrentLocation().isEmpty()) {
       fetch = () -> startActivity(new Intent(this, MainViewActivity.class));
 
       handler.postDelayed(fetch, DELAY);
     } else {
-      startService(new Intent(this, null));
+      locationViewModel.loadCurrentLocationData();
     }
   }
 
