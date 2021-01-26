@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <dimen name="navigation_menu_height">56dp</dimen>
+  <dimen name="navigation_item_height">30dp</dimen>
+  <dimen name="navigation_elevation">15dp</dimen>
+</resources>

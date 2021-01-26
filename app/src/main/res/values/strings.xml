@@ -2,4 +2,10 @@
   <string name="app_name">Sights Locator</string>
   <string name="application_logo_content_description">Showing application logo while loading application</string>
   <string name="showing_loading_icon">Showing loading icon</string>
+  <string name="image_list_description">View list of sights</string>
+  <string name="menu_exit">Exit</string>
+  <string name="menu_sight">Sight</string>
+  <string name="menu_list">List</string>
+  <string name="menu_maps">Maps</string>
+  <string name="menu_about">About</string>
 </resources>

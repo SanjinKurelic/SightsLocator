@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <item
+    android:id="@+id/exit"
+    android:icon="@drawable/ic_exit"
+    android:title="@string/menu_exit" />
+
+  <item
+    android:id="@+id/sight"
+    android:icon="@drawable/ic_item"
+    android:title="@string/menu_sight" />
+
+  <item
+    android:id="@+id/list"
+    android:title="@string/menu_list" />
+
+  <item
+    android:id="@+id/maps"
+    android:icon="@drawable/ic_location"
+    android:title="@string/menu_maps" />
+
+  <item
+    android:id="@+id/about"
+    android:icon="@drawable/ic_about"
+    android:title="@string/menu_about" />
+
+</menu>
