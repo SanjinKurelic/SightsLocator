@@ -1,4 +1,4 @@
-package eu.sanjin.sightslocator.intro.view;
+package eu.sanjin.sightslocator.intro;
 
 import android.animation.ObjectAnimator;
 import android.content.Intent;
@@ -25,11 +25,10 @@ public class SplashScreenActivity extends AppCompatActivity {
   private LocationViewModel locationViewModel;
   private ActivitySplashScreenBinding binding;
 
-  // ? ---
+  // Delay app start if everything is already loaded
   private static final int DELAY = 3000;
   private final Handler handler = new Handler(Looper.getMainLooper());
   private Runnable fetch;
-  // ? ---
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
