@@ -11,6 +11,8 @@ import android.view.animation.Animation;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import java.util.Objects;
+
 import eu.sanjin.sightslocator.MainViewActivity;
 import eu.sanjin.sightslocator.databinding.ActivitySplashScreenBinding;
 import eu.sanjin.sightslocator.intro.model.LocationModel;
@@ -24,7 +26,7 @@ public class SplashScreenActivity extends AppCompatActivity {
   // Delay app start if everything is already loaded
   private static final int DELAY = 3000;
   private final Handler handler = new Handler(Looper.getMainLooper());
-  private Runnable fetch;
+  private Runnable redirect;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -41,20 +43,23 @@ public class SplashScreenActivity extends AppCompatActivity {
   protected void onResume() {
     super.onResume();
     startAnimations();
-    refreshUi(locationViewModel.getLocation().getValue());
+    refreshUi(Objects.requireNonNull(locationViewModel.getLocation().getValue()));
   }
 
   @Override
   public void finish() {
     super.finish();
-    handler.removeCallbacks(fetch);
+    handler.removeCallbacks(redirect);
   }
 
   private void refreshUi(LocationModel model) {
     if (!model.getCurrentLocation().isEmpty()) {
-      fetch = () -> startActivity(new Intent(this, MainViewActivity.class));
+      redirect = () -> {
+        startActivity(new Intent(this, MainViewActivity.class));
+        finish();
+      };
 
-      handler.postDelayed(fetch, DELAY);
+      handler.postDelayed(redirect, DELAY);
     } else {
       locationViewModel.loadCurrentLocationData(this);
     }

@@ -12,8 +12,12 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/Theme.SightsLocator">
-    <activity android:name=".MainViewActivity" />
-    <activity android:name=".intro.SplashScreenActivity">
+    <activity
+      android:name=".MainViewActivity"
+      android:launchMode="singleTop" />
+    <activity
+      android:name=".intro.SplashScreenActivity"
+      android:noHistory="true">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 
