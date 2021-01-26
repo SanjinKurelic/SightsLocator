@@ -1,0 +1,5 @@
+<resources>
+  <string name="app_name">Sights Locator</string>
+  <string name="application_logo_content_description">Showing application logo while loading application</string>
+  <string name="showing_loading_icon">Showing loading icon</string>
+</resources>
