@@ -8,4 +8,7 @@
   <string name="menu_list">Sight List</string>
   <string name="menu_maps">Sight Location</string>
   <string name="menu_about">About Application</string>
+  <string name="developer_info">Developer: Sanjin Kurelić</string>
+  <string name="developer_web">www.sanjin.eu</string>
+  <string name="app_version">Version: 2021.1.0</string>
 </resources>
