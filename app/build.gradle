@@ -40,6 +40,7 @@ dependencies {
     'lombok': '1.18.16',
     'material': '1.2.1',
     'mockito': '1.10.19',
+    'navigation': '2.3.2',
     'preference': '1.1.1',
     'reactiveX': '3.0.0',
     'retrofit': '2.8.1',
@@ -68,6 +69,10 @@ dependencies {
   // Room DAO
   implementation "androidx.room:room-runtime:$version.room"
   annotationProcessor "androidx.room:room-compiler:$version.room"
+
+  // Fragment navigation
+  implementation "androidx.navigation:navigation-fragment:$version.navigation"
+  implementation "androidx.navigation:navigation-ui:$version.navigation"
 
   // Test libs
   testImplementation "junit:junit:$version.junit"

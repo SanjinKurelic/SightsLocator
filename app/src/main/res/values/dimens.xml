@@ -3,4 +3,5 @@
   <dimen name="navigation_menu_height">56dp</dimen>
   <dimen name="navigation_item_height">30dp</dimen>
   <dimen name="navigation_elevation">15dp</dimen>
+  <dimen name="navigation_fab_item_dimensions">80dp</dimen>
 </resources>

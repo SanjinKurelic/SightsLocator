@@ -4,8 +4,8 @@
   <string name="showing_loading_icon">Showing loading icon</string>
   <string name="image_list_description">View list of sights</string>
   <string name="menu_exit">Exit</string>
-  <string name="menu_sight">Sight</string>
-  <string name="menu_list">List</string>
-  <string name="menu_maps">Maps</string>
-  <string name="menu_about">About</string>
+  <string name="menu_sight">Sight Info</string>
+  <string name="menu_list">Sight List</string>
+  <string name="menu_maps">Sight Location</string>
+  <string name="menu_about">About Application</string>
 </resources>

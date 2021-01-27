@@ -20,8 +20,8 @@
 
   <ImageButton
     android:id="@+id/main_page_button"
-    android:layout_width="80dp"
-    android:layout_height="80dp"
+    android:layout_width="@dimen/navigation_fab_item_dimensions"
+    android:layout_height="@dimen/navigation_fab_item_dimensions"
     android:layout_alignParentBottom="true"
     android:layout_centerHorizontal="true"
     android:layout_marginBottom="@dimen/navigation_elevation"
@@ -35,6 +35,9 @@
     android:id="@+id/fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="@dimen/navigation_menu_height"/>
+    android:layout_marginBottom="@dimen/navigation_menu_height"
+    android:name="androidx.navigation.fragment.NavHostFragment"
+    app:defaultNavHost="true"
+    app:navGraph="@navigation/fragments" />
 
 </RelativeLayout>
