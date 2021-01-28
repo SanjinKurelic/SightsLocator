@@ -14,9 +14,11 @@ import eu.sanjin.handlers.PreferenceHandler;
 import eu.sanjin.handlers.PreferenceKey;
 import eu.sanjin.handlers.RetrofitHandler;
 import eu.sanjin.model.Sight;
+import eu.sanjin.parser.ResponseTransformer;
 import eu.sanjin.service.LocationDataRestApi;
 import eu.sanjin.sightslocator.intro.model.LocationModel;
 import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import lombok.Getter;
 import retrofit2.Call;
@@ -50,16 +52,18 @@ public class LocationViewModel extends ViewModel {
       @EverythingIsNonNull
       public void onResponse(Call<Sight[]> call, Response<Sight[]> response) {
         // Store fetched data to database
-        //noinspection ResultOfMethodCallIgnored
-        Observable.just(DaoHandler.getInstance(context).sightDao())
+        Disposable insertToDatabase = Observable.just(DaoHandler.getInstance(context).sightDao())
           .subscribeOn(Schedulers.io())
-          .subscribe(db -> db.insertAll(response.body()));
-
-        // Store new location in shared pref
-        PreferenceHandler.setStringPreference(context, PreferenceKey.LAST_USER_LOCATION, currentLocation);
-
-        // Refresh VM
-        location.postValue(new LocationModel(currentLocation));
+          .subscribe(db -> {
+            // Store images to local disk
+            ResponseTransformer.transformImagePath(context, response.body());
+            // Store fetched data to database
+            db.insertAll(response.body());
+            // Store new location in shared pref
+            PreferenceHandler.setStringPreference(context, PreferenceKey.LAST_USER_LOCATION, currentLocation);
+            // Refresh VM
+            location.postValue(new LocationModel(currentLocation));
+          }, e -> Log.e(LocationViewModel.class.getName(), e.getMessage()));
       }
 
       @Override
