@@ -15,8 +15,8 @@ import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 
 public class ResponseTransformer {
 
-  private static final int IMAGE_MARGIN = 5;
-  private static final int IMAGE_RADIUS = 2;
+  public static final int IMAGE_MARGIN = 5;
+  public static final int IMAGE_RADIUS = 2;
   private static final int IMAGE_WIDTH = 750;
   private static final int IMAGE_HEIGHT = 422;
 

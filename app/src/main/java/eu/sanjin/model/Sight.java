@@ -2,6 +2,7 @@ package eu.sanjin.model;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.Ignore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +12,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
+@AllArgsConstructor(onConstructor = @__(@Ignore))
 @NoArgsConstructor
 public class Sight {
 
