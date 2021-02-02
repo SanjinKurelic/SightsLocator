@@ -52,7 +52,8 @@ public class LocationViewModel extends ViewModel {
       @EverythingIsNonNull
       public void onResponse(Call<Sight[]> call, Response<Sight[]> response) {
         // Store fetched data to database
-        Disposable insertToDatabase = Observable.just(DaoHandler.getInstance(context).sightDao())
+        //noinspection ResultOfMethodCallIgnored
+        Observable.just(DaoHandler.getInstance(context).sightDao())
           .subscribeOn(Schedulers.io())
           .subscribe(db -> {
             // Store images to local disk
