@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import java.util.ArrayList;
 
 import eu.sanjin.model.Sight;
+import eu.sanjin.sightslocator.MainViewActivity;
 import eu.sanjin.sightslocator.databinding.FragmentListBinding;
 import eu.sanjin.sightslocator.list.helper.ListAdapter;
 import eu.sanjin.sightslocator.list.helper.ListTouchHelper;
@@ -34,8 +35,9 @@ public class ListFragment extends Fragment implements ListTouchListener {
     binding.progressBar.setVisibility(View.VISIBLE);
 
     viewModel = new ViewModelProvider(this).get(ListViewModel.class);
-    viewModel.init(this.getContext());
+    viewModel.init(this);
     viewModel.getList().observe(this.getViewLifecycleOwner(), this::refreshAdapter);
+    viewModel.loadSightListData(this.getContext());
 
     adapter = new ListAdapter(viewModel);
     binding.sightList.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -57,5 +59,10 @@ public class ListFragment extends Fragment implements ListTouchListener {
   public void onSwiped(int position) {
     binding.progressBar.setVisibility(View.VISIBLE);
     viewModel.deleteListData(this.getContext(), position);
+  }
+
+  @Override
+  public void onItemClick() {
+    ((MainViewActivity) requireContext()).showInfo();
   }
 }

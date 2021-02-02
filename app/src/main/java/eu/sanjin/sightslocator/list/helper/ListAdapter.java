@@ -25,6 +25,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListViewHolder> {
 
   @Override
   public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
+    // Open info fragment on click
+    holder.getBinding().viewForeground.setOnClickListener(v -> viewModel.view(holder.itemView.getContext(), position));
     viewModel.bindSight(holder, position);
   }
 

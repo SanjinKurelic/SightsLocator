@@ -12,5 +12,5 @@
   <string name="developer_web">www.sanjin.eu</string>
   <string name="app_version">Version: 2021.1.0</string>
   <string name="delete_icon">Delete icon</string>
-  <string name="list_item_image_description">Image of the sight</string>
+  <string name="sight_image_description">Image of the sight</string>
 </resources>

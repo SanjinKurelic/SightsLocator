@@ -12,12 +12,24 @@ public class PreferenceHandler {
   private static final String PREFERENCE_ROOT = Objects.requireNonNull(PreferenceManager.class.getPackage()).getName();
 
   public static Optional<String> getStringPreference(Context context, PreferenceKey preferenceKey) {
-    String key = PREFERENCE_ROOT + preferenceKey.getKey();
-    return Optional.ofNullable(PreferenceManager.getDefaultSharedPreferences(context).getString(key, null));
+    return Optional.ofNullable(
+      PreferenceManager.getDefaultSharedPreferences(context).getString(getStringKey(preferenceKey), null)
+    );
   }
 
   public static void setStringPreference(Context context, PreferenceKey preferenceKey, String value) {
-    String key = PREFERENCE_ROOT + preferenceKey.getKey();
-    PreferenceManager.getDefaultSharedPreferences(context).edit().putString(key, value).apply();
+    PreferenceManager.getDefaultSharedPreferences(context).edit().putString(getStringKey(preferenceKey), value).apply();
+  }
+
+  public static int getIntPreference(Context context, PreferenceKey preferenceKey) {
+    return PreferenceManager.getDefaultSharedPreferences(context).getInt(getStringKey(preferenceKey), 0);
+  }
+
+  public static void setIntPreference(Context context, PreferenceKey preferenceKey, int value) {
+    PreferenceManager.getDefaultSharedPreferences(context).edit().putInt(getStringKey(preferenceKey), value).apply();
+  }
+
+  private static String getStringKey(PreferenceKey preferenceKey) {
+    return PREFERENCE_ROOT + preferenceKey.getKey();
   }
 }
