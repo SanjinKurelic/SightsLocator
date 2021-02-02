@@ -8,14 +8,44 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
-import eu.sanjin.sightslocator.R;
+import java.util.ArrayList;
+
+import eu.sanjin.handlers.PreferenceHandler;
+import eu.sanjin.handlers.PreferenceKey;
+import eu.sanjin.model.Sight;
+import eu.sanjin.sightslocator.databinding.FragmentItemBinding;
+import eu.sanjin.sightslocator.item.helper.ItemAdapter;
+import eu.sanjin.sightslocator.list.viewmodel.ListViewModel;
 
 public class ItemFragment extends Fragment {
+
+  private ItemAdapter adapter;
+  private FragmentItemBinding binding;
 
   @Nullable
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-    return inflater.inflate(R.layout.fragment_item, container, false);
+    binding = FragmentItemBinding.inflate(getLayoutInflater());
+
+    // Set view model
+    ListViewModel viewModel = new ViewModelProvider(this).get(ListViewModel.class);
+    viewModel.init(null);
+    viewModel.getList().observe(this.getViewLifecycleOwner(), this::refreshAdapter);
+
+    // Set adapter
+    adapter = new ItemAdapter(viewModel);
+    binding.sight.setAdapter(adapter);
+
+    // Load sight data
+    viewModel.loadSightListData(this.getContext());
+
+    return binding.getRoot();
+  }
+
+  private void refreshAdapter(ArrayList<Sight> sights) {
+    adapter.notifyDataSetChanged();
+    binding.sight.post(() -> binding.sight.setCurrentItem(PreferenceHandler.getIntPreference(getContext(), PreferenceKey.SIGHT_ITEM_POSITION)));
   }
 }
