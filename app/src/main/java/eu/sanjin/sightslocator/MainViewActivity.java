@@ -30,6 +30,8 @@ public class MainViewActivity extends AppCompatActivity {
     }
     // Custom action for exiting application
     binding.bottomNavigation.getMenu().findItem(R.id.exit).setOnMenuItemClickListener(item -> exitApplication());
+    // Show list
+    showList(this.getCurrentFocus());
   }
 
   public void showList(View v) {

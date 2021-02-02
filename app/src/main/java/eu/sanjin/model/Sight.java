@@ -16,7 +16,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Sight {
 
-  @PrimaryKey(autoGenerate = true)
+  @PrimaryKey
   private Long id;
   private String title;
   private String description;
