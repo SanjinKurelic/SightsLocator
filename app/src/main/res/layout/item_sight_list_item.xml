@@ -11,19 +11,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <RelativeLayout
       android:id="@+id/viewBackground"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
+      android:layout_height="match_parent"
+      android:background="#E11E22"
       android:gravity="end">
 
       <ImageView
         android:id="@+id/deleteButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="75dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
         android:src="@drawable/ic_trash"
+        app:tint="@color/white"
         android:contentDescription="@string/delete_icon" />
-    </LinearLayout>
+    </RelativeLayout>
 
     <RelativeLayout
       android:id="@+id/viewForeground"
