@@ -9,7 +9,7 @@
   <ImageView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:src="@drawable/no_image"
+    android:src="@drawable/app_logo"
     android:contentDescription="@string/application_logo_content_description" />
 
   <TextView
@@ -25,6 +25,6 @@
     android:paddingTop="20dp"
     android:contentDescription="@string/showing_loading_icon"
     android:id="@+id/splash_screen_loading_icon"
-    android:src="@drawable/splash_screen_loading" />
+    android:src="@drawable/ic_loading" />
 
 </LinearLayout>

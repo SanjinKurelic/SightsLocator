@@ -10,7 +10,7 @@
     android:layout_height="wrap_content"
     android:adjustViewBounds="true"
     android:contentDescription="@string/application_logo_content_description"
-    android:src="@drawable/no_image" />
+    android:src="@drawable/app_logo" />
 
   <TextView
     android:layout_width="wrap_content"

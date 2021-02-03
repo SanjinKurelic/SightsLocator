@@ -15,7 +15,7 @@
     android:layout_width="300dp"
     android:layout_height="150dp"
     android:contentDescription="@string/sight_image_description"
-    android:src="@drawable/no_image" />
+    tools:src="@drawable/no_image" />
 
   <TextView
     android:id="@+id/mapInfoTitle"
