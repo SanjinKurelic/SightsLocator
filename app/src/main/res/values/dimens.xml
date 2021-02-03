@@ -5,4 +5,10 @@
   <dimen name="navigation_elevation">15dp</dimen>
   <dimen name="navigation_fab_item_dimensions">80dp</dimen>
   <dimen name="sight_item_margin">20dp</dimen>
+  <dimen name="small_margin">5dp</dimen>
+  <dimen name="medium_margin">20dp</dimen>
+  <dimen name="big_margin">40dp</dimen>
+  <dimen name="huge_text">40sp</dimen>
+  <dimen name="large_padding">40dp</dimen>
+  <dimen name="small_padding">10dp</dimen>
 </resources>

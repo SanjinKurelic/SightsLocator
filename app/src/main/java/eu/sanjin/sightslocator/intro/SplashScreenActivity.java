@@ -1,12 +1,11 @@
 package eu.sanjin.sightslocator.intro;
 
-import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.view.View;
 import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -14,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 import java.util.Objects;
 
 import eu.sanjin.sightslocator.MainViewActivity;
+import eu.sanjin.sightslocator.R;
 import eu.sanjin.sightslocator.databinding.ActivitySplashScreenBinding;
 import eu.sanjin.sightslocator.intro.model.LocationModel;
 import eu.sanjin.sightslocator.intro.viewmodel.LocationViewModel;
@@ -66,11 +66,9 @@ public class SplashScreenActivity extends AppCompatActivity {
   }
 
   private void startAnimations() {
-    //AnimationUtils.loadAnimation(this, RotateBin);
-    //binding.splashScreenLoadingIcon.startAnimation();
-    ObjectAnimator rotate = ObjectAnimator.ofFloat(binding.splashScreenLoadingIcon, View.ROTATION, 0f, 360f);
-    rotate.setDuration(300);
-    rotate.setRepeatCount(Animation.INFINITE);
-    rotate.start();
+    binding.animSplashScreenRipple.startRippleAnimation();
+
+    Animation logoAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.logo_animation);
+    binding.ivSplashScreenLogo.startAnimation(logoAnimation);
   }
 }
