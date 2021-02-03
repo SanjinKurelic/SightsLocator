@@ -1,19 +1,15 @@
 package eu.sanjin.model;
 
+import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-import androidx.room.Ignore;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor(onConstructor = @__(@Ignore))
-@NoArgsConstructor
 public class Sight {
 
   @PrimaryKey
@@ -21,5 +17,7 @@ public class Sight {
   private String title;
   private String description;
   private String imageUrl;
+  @Embedded
+  SightLocation location;
 
 }

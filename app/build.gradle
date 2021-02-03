@@ -20,6 +20,13 @@ android {
         arguments += ["room.schemaLocation": "$projectDir/schemas".toString()]
       }
     }
+
+    // Google maps key
+    Properties properties = new Properties()
+    if (rootProject.file("local.properties").exists()) {
+      properties.load(rootProject.file("local.properties").newDataInputStream())
+    }
+    manifestPlaceholders = ["mapsApiKey": properties.getProperty("MAPS_API_KEY", "")]
   }
 
   buildTypes {
@@ -44,6 +51,7 @@ dependencies {
     'constraintlayout'      : '2.0.4',
     'junit'                 : '4.13.1',
     'lombok'                : '1.18.16',
+    'maps'                  : '17.0.0',
     'material'              : '1.2.1',
     'mockito'               : '1.10.19',
     'navigation'            : '2.3.3',
@@ -86,6 +94,9 @@ dependencies {
   implementation "jp.wasabeef:picasso-transformations:$version.picassoTransformations"
   //noinspection GradleDependency - bug in picasso versioning
   implementation "com.squareup.picasso:picasso:$version.picasso"
+
+  // Google Maps
+  implementation "com.google.android.gms:play-services-maps:$version.maps"
 
   // Test libs
   testImplementation "junit:junit:$version.junit"

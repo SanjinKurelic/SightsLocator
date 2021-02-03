@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:gravity="center"
+  android:orientation="vertical"
+  android:padding="10dp"
+  android:background="@color/white"
+  app:layout_constraintCircleRadius="20dp">
+
+  <ImageView
+    android:id="@+id/mapInfoImage"
+    android:layout_width="300dp"
+    android:layout_height="150dp"
+    android:contentDescription="@string/sight_image_description"
+    android:src="@drawable/no_image" />
+
+  <TextView
+    android:id="@+id/mapInfoTitle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:padding="10dp"
+    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+    tools:text="Demo sight name" />
+
+  <TextView
+    android:id="@+id/btnMapInfoMoreInfo"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="@color/primary"
+    android:text="@string/more_info_button" />
+
+</LinearLayout>
