@@ -20,12 +20,12 @@ import eu.sanjin.sightslocator.databinding.FragmentListBinding;
 import eu.sanjin.sightslocator.list.helper.ListAdapter;
 import eu.sanjin.sightslocator.list.helper.ListTouchHelper;
 import eu.sanjin.sightslocator.list.helper.ListTouchListener;
-import eu.sanjin.sightslocator.list.viewmodel.ListViewModel;
+import eu.sanjin.viewmodel.SightViewModel;
 
 public class ListFragment extends Fragment implements ListTouchListener {
 
   private ListAdapter adapter;
-  private ListViewModel viewModel;
+  private SightViewModel viewModel;
   private FragmentListBinding binding;
 
   @Nullable
@@ -34,7 +34,7 @@ public class ListFragment extends Fragment implements ListTouchListener {
     binding = FragmentListBinding.inflate(getLayoutInflater());
     binding.progressBar.setVisibility(View.VISIBLE);
 
-    viewModel = new ViewModelProvider(this).get(ListViewModel.class);
+    viewModel = new ViewModelProvider(this).get(SightViewModel.class);
     viewModel.init(this);
     viewModel.getList().observe(this.getViewLifecycleOwner(), this::refreshAdapter);
     viewModel.loadSightListData(this.getContext());

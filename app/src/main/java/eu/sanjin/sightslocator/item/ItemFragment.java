@@ -17,7 +17,7 @@ import eu.sanjin.handlers.PreferenceKey;
 import eu.sanjin.model.Sight;
 import eu.sanjin.sightslocator.databinding.FragmentItemBinding;
 import eu.sanjin.sightslocator.item.helper.ItemAdapter;
-import eu.sanjin.sightslocator.list.viewmodel.ListViewModel;
+import eu.sanjin.viewmodel.SightViewModel;
 
 public class ItemFragment extends Fragment {
 
@@ -30,7 +30,7 @@ public class ItemFragment extends Fragment {
     binding = FragmentItemBinding.inflate(getLayoutInflater());
 
     // Set view model
-    ListViewModel viewModel = new ViewModelProvider(this).get(ListViewModel.class);
+    SightViewModel viewModel = new ViewModelProvider(this).get(SightViewModel.class);
     viewModel.init(null);
     viewModel.getList().observe(this.getViewLifecycleOwner(), this::refreshAdapter);
 

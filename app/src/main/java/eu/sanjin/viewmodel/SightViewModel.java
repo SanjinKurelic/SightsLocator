@@ -1,4 +1,4 @@
-package eu.sanjin.sightslocator.list.viewmodel;
+package eu.sanjin.viewmodel;
 
 import android.content.Context;
 
@@ -18,7 +18,7 @@ import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import lombok.Getter;
 
-public class ListViewModel extends ViewModel {
+public class SightViewModel extends ViewModel {
 
   @Getter
   private MutableLiveData<ArrayList<Sight>> list;

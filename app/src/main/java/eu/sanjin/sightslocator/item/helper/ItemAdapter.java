@@ -7,13 +7,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import eu.sanjin.sightslocator.R;
-import eu.sanjin.sightslocator.list.viewmodel.ListViewModel;
+import eu.sanjin.viewmodel.SightViewModel;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class ItemAdapter extends RecyclerView.Adapter<ItemViewHolder> {
 
-  private final ListViewModel viewModel;
+  private final SightViewModel viewModel;
 
   @NonNull
   @Override

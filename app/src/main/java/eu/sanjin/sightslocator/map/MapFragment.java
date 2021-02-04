@@ -28,14 +28,14 @@ import eu.sanjin.model.Sight;
 import eu.sanjin.sightslocator.MainViewActivity;
 import eu.sanjin.sightslocator.R;
 import eu.sanjin.sightslocator.databinding.ItemMapInfoWindowBinding;
-import eu.sanjin.sightslocator.list.viewmodel.ListViewModel;
+import eu.sanjin.viewmodel.SightViewModel;
 import eu.sanjin.sightslocator.map.helper.MapAdapter;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
 
   private static final float MAP_ZOOM_LEVEL = 11f;
   private GoogleMap map;
-  private ListViewModel viewModel;
+  private SightViewModel viewModel;
   private ItemMapInfoWindowBinding binding;
 
   @Nullable
@@ -57,7 +57,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
     if (mapFragment != null) {
       mapFragment.getMapAsync(this);
 
-      viewModel = new ViewModelProvider(this).get(ListViewModel.class);
+      viewModel = new ViewModelProvider(this).get(SightViewModel.class);
       viewModel.init(null);
       viewModel.getList().observe(this.getViewLifecycleOwner(), this::refreshAdapter);
     }
