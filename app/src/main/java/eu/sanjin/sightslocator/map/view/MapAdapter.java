@@ -1,4 +1,4 @@
-package eu.sanjin.sightslocator.map.helper;
+package eu.sanjin.sightslocator.map.view;
 
 import android.view.View;
 

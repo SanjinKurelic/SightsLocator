@@ -16,7 +16,7 @@ import eu.sanjin.handlers.PreferenceHandler;
 import eu.sanjin.handlers.PreferenceKey;
 import eu.sanjin.model.Sight;
 import eu.sanjin.sightslocator.databinding.FragmentItemBinding;
-import eu.sanjin.sightslocator.item.helper.ItemAdapter;
+import eu.sanjin.sightslocator.item.view.ItemAdapter;
 import eu.sanjin.viewmodel.SightViewModel;
 
 public class ItemFragment extends Fragment {

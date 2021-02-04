@@ -1,4 +1,4 @@
-package eu.sanjin.sightslocator.list.helper;
+package eu.sanjin.sightslocator.list.view;
 
 import android.graphics.Canvas;
 
@@ -9,11 +9,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.Objects;
 
+import eu.sanjin.contracts.ListTouchContract;
+
 public class ListTouchHelper extends ItemTouchHelper.SimpleCallback {
 
-  private final ListTouchListener listener;
+  private final ListTouchContract listener;
 
-  public ListTouchHelper(int dragDirs, int swipeDirs, ListTouchListener listener) {
+  public ListTouchHelper(int dragDirs, int swipeDirs, ListTouchContract listener) {
     super(dragDirs, swipeDirs);
     this.listener = listener;
   }

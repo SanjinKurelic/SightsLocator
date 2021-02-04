@@ -17,12 +17,12 @@ import java.util.ArrayList;
 import eu.sanjin.model.Sight;
 import eu.sanjin.sightslocator.MainViewActivity;
 import eu.sanjin.sightslocator.databinding.FragmentListBinding;
-import eu.sanjin.sightslocator.list.helper.ListAdapter;
-import eu.sanjin.sightslocator.list.helper.ListTouchHelper;
-import eu.sanjin.sightslocator.list.helper.ListTouchListener;
+import eu.sanjin.sightslocator.list.view.ListAdapter;
+import eu.sanjin.sightslocator.list.view.ListTouchHelper;
+import eu.sanjin.contracts.ListTouchContract;
 import eu.sanjin.viewmodel.SightViewModel;
 
-public class ListFragment extends Fragment implements ListTouchListener {
+public class ListFragment extends Fragment implements ListTouchContract {
 
   private ListAdapter adapter;
   private SightViewModel viewModel;

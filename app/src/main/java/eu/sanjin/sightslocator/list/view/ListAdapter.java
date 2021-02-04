@@ -1,4 +1,4 @@
-package eu.sanjin.sightslocator.list.helper;
+package eu.sanjin.sightslocator.list.view;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;

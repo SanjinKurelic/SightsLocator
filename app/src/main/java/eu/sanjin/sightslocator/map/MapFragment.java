@@ -29,7 +29,7 @@ import eu.sanjin.sightslocator.MainViewActivity;
 import eu.sanjin.sightslocator.R;
 import eu.sanjin.sightslocator.databinding.ItemMapInfoWindowBinding;
 import eu.sanjin.viewmodel.SightViewModel;
-import eu.sanjin.sightslocator.map.helper.MapAdapter;
+import eu.sanjin.sightslocator.map.view.MapAdapter;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
 
