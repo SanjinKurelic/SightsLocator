@@ -53,7 +53,7 @@ dependencies {
     'lombok'                : '1.18.16',
     'maps'                  : '17.0.0',
     'material'              : '1.2.1',
-    'mockito'               : '1.10.19',
+    'mockito'               : '3.7.7',
     'navigation'            : '2.3.3',
     'picasso'               : '2.8',
     'picassoTransformations': '2.2.1',
@@ -105,5 +105,6 @@ dependencies {
   // Test libs
   testImplementation "junit:junit:$version.junit"
   testImplementation "androidx.test:core:$version.test"
-  testImplementation "org.mockito:mockito-all:$version.mockito"
+  testImplementation "org.mockito:mockito-inline:$version.mockito"
+
 }
