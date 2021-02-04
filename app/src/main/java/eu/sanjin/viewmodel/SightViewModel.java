@@ -13,7 +13,7 @@ import eu.sanjin.handlers.DaoHandler;
 import eu.sanjin.handlers.PreferenceHandler;
 import eu.sanjin.handlers.PreferenceKey;
 import eu.sanjin.model.Sight;
-import eu.sanjin.sightslocator.list.helper.ListTouchListener;
+import eu.sanjin.contracts.ListTouchContract;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import lombok.Getter;
@@ -22,9 +22,9 @@ public class SightViewModel extends ViewModel {
 
   @Getter
   private MutableLiveData<ArrayList<Sight>> list;
-  private ListTouchListener listener;
+  private ListTouchContract listener;
 
-  public void init(ListTouchListener listener) {
+  public void init(ListTouchContract listener) {
     if (list != null) {
       return;
     }
